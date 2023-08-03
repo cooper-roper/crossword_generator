@@ -1,0 +1,33 @@
+/* Configurations.css */
+
+.configurations {
+    width: 300px; /* Set a specific width for the configurations container */
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    align-items: stretch;
+    height: 100%;
+  }
+  
+  .configurations label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .configurations input {
+    margin-right: 5px;
+  }
+  
+  .configurations button {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .configurations button:hover {
+    background-color: #0056b3;
+  }
+  

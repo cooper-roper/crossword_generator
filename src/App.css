@@ -1,38 +1,42 @@
-.App {
+/* App.css */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+h1 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  height: 100%;
+  display: 'grid';
+  grid-template-columns: 'auto auto';
+  gap: '10px';
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.spacer {
+  height: 100%;
+  width: 30%;
+  float: left;
+  /* border: 1px solid red; */
+  box-sizing: border-box; /* Optional: This ensures that padding and borders don't affect the height */
+  /* Add other styles as needed */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.grid_container {
+  width: auto;
+  height: auto;
+  float: left;
+  /* border: 1px solid red; */
+  box-sizing: border-box; /* Optional: This ensures that padding and borders don't affect the height */
+  /* Add other styles as needed */
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.config_container {
+  float: right;
+  height: 80%;
+  box-sizing: border-box; /* Optional: This ensures that padding and borders don't affect the height */
+  /* Add other styles as needed */
 }

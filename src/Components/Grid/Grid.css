@@ -1,0 +1,11 @@
+/* CrosswordGrid.css */
+  
+.crossword-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-size), min-content);
+    grid-template-rows: repeat(var(--grid-size), min-content);
+    gap: 1px;
+    background-color: black;
+    width: fit-content;
+    float: left;
+}
