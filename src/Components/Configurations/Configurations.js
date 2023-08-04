@@ -5,10 +5,14 @@ import { useCrosswordContext } from '../../Context/CrosswordContext';
 const Configurations = () => {
     const { gridSize, setGridSize, mirroringOptions, setMirroringOptions } = useCrosswordContext();
 
+    // Local state to store the values of the inputs
     const [localGridSize, setLocalGridSize] = useState(gridSize);
     const [localMirroredX, setLocalMirroredX] = useState(mirroringOptions.x);
     const [localMirroredY, setLocalMirroredY] = useState(mirroringOptions.y);
 
+
+    // handle the changes in the input fields
+    // set the local state to the new value
     const handleGridSizeChange = (event) => {
         const newSize = parseInt(event.target.value);
         if (newSize >= 5 && newSize <= 10) {
@@ -26,6 +30,7 @@ const Configurations = () => {
         setLocalMirroredY(newValue);
     };
 
+    // handle the save changes button
     const handleSaveChanges = () => {
         setGridSize(localGridSize);
         setMirroringOptions({ x: localMirroredX, y: localMirroredY });

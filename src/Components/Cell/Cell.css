@@ -16,11 +16,8 @@ p {
   }
 
 .cell-number {
-    font-size: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 2px;
+    font-size: calc(100px / var(--grid-size));
+    margin-left: 5px;
 }
 
 .cell-letter {

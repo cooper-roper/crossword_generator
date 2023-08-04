@@ -9,34 +9,33 @@ h1 {
   text-align: center;
 }
 
-.app {
+.app_container {
+  display: flex;
+  margin-left: 2.5%;
+  width: 95%;
   height: 100%;
-  display: 'grid';
-  grid-template-columns: 'auto auto';
   gap: '10px';
 }
 
-.spacer {
-  height: 100%;
-  width: 30%;
-  float: left;
-  /* border: 1px solid red; */
-  box-sizing: border-box; /* Optional: This ensures that padding and borders don't affect the height */
-  /* Add other styles as needed */
+.words_container {
+  width: auto;
+  height: auto;
+  min-height: 80%;
 }
 
 .grid_container {
+  /* spacing to left and right */
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
   width: auto;
   height: auto;
-  float: left;
-  /* border: 1px solid red; */
   box-sizing: border-box; /* Optional: This ensures that padding and borders don't affect the height */
   /* Add other styles as needed */
 }
 
 .config_container {
-  float: right;
-  height: 80%;
+  height: auto;
   box-sizing: border-box; /* Optional: This ensures that padding and borders don't affect the height */
   /* Add other styles as needed */
 }
