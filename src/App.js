@@ -4,7 +4,7 @@ import React from 'react';
 import CrosswordGrid from './Components/Grid/Grid';
 import Configurations from './Components/Configurations/Configurations';
 import Words from './Components/Words/Words';
-import Submit from './Components/Submit/Submit';
+//import Submit from './Components/Submit/Submit';
 import './App.css';
 
 function App() {

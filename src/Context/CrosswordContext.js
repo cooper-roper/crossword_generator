@@ -5,7 +5,6 @@ const CrosswordContext = createContext();
 export const CrosswordProvider = ({ children }) => {
     const [gridSize, setGridSize] = useState(10); // Replace this with your actual grid size
     const [mirroringOptions, setMirroringOptions] = useState({ x: true, y: true });
-    const [topic, setTopic] = useState(''); // Replace this with your actual topic
 
     const getDirection = (row, col, above, left) => {
         if (row === 0 || col === 0 || above || left) {
@@ -24,8 +23,6 @@ export const CrosswordProvider = ({ children }) => {
             return 'none';
         }
     }
-
-
 
     // Function to create the initial grid data
     const createInitialGridData = useCallback(() => {
@@ -124,6 +121,10 @@ export const CrosswordProvider = ({ children }) => {
         });
     }, [gridSize, mirroringOptions.x, mirroringOptions.y]);
 
+    const generatePuzzle = (topic) => {
+        // generate puzzle
+    }
+
     useEffect(() => {
         setGridData(createInitialGridData());
     }, [gridSize, mirroringOptions, createInitialGridData]);
@@ -143,6 +144,7 @@ export const CrosswordProvider = ({ children }) => {
         handleCellClick,
         createInitialGridData,
         words,
+        generatePuzzle,
       }}
     >
       {children}
