@@ -125,12 +125,12 @@ export const CrosswordProvider = ({ children }) => {
     const sendDataToBackend = async (topic) => {
         const url = process.env.REACT_APP_BACKEND_URL;
         try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ gridData, topic }),
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ gridData, topic }),
         });
 
         if (!response.ok) {
@@ -140,7 +140,7 @@ export const CrosswordProvider = ({ children }) => {
         const responseData = await response.json();
         console.log('Backend response:', responseData);
         } catch (error) {
-        console.error('Error sending data to backend:', error);
+            console.error('Error sending data to backend:', error);
         }
 
         setGridData(gridData);
