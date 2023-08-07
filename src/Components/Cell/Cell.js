@@ -22,7 +22,7 @@ const Cell = ({ cellData, row, col }) => {
                     {cellData.number > 0 ? cellData.number : null}
                 </div>
                 <div className="cell-letter">
-                    {/* {cellData.letter} */}
+                    {cellData.letter}
                 </div>
             </div>}
         </div>

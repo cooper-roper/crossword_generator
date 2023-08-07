@@ -121,9 +121,30 @@ export const CrosswordProvider = ({ children }) => {
         });
     }, [gridSize, mirroringOptions.x, mirroringOptions.y]);
 
-    const generatePuzzle = (topic) => {
-        // generate puzzle
-    }
+    // Function to send the data to the backend
+    const sendDataToBackend = async (topic) => {
+        const url = process.env.REACT_APP_BACKEND_URL;
+        try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ gridData, topic }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const responseData = await response.json();
+        console.log('Backend response:', responseData);
+        } catch (error) {
+        console.error('Error sending data to backend:', error);
+        }
+
+        setGridData(gridData);
+    };
 
     useEffect(() => {
         setGridData(createInitialGridData());
@@ -144,7 +165,7 @@ export const CrosswordProvider = ({ children }) => {
         handleCellClick,
         createInitialGridData,
         words,
-        generatePuzzle,
+        sendDataToBackend,
       }}
     >
       {children}

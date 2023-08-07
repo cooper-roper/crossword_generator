@@ -3,7 +3,7 @@ import './Configurations.css';
 import { useCrosswordContext } from '../../Context/CrosswordContext';
 
 const Configurations = () => {
-    const { gridSize, setGridSize, mirroringOptions, setMirroringOptions, setTopic } = useCrosswordContext();
+    const { gridSize, setGridSize, mirroringOptions, setMirroringOptions, sendDataToBackend } = useCrosswordContext();
 
     // Local state to store the values of the inputs
     const [localGridSize, setLocalGridSize] = useState(gridSize);
@@ -51,7 +51,9 @@ const Configurations = () => {
     };
 
     const Submit = () => {
-        console.log(localTopic);
+        let topic = '';
+        if(!showTextInput) topic = localTopic;
+        sendDataToBackend(topic);
     };
 
     return (
