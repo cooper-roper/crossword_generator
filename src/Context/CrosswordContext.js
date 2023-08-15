@@ -117,6 +117,8 @@ export const CrosswordProvider = ({ children }) => {
             }
         }
 
+        console.log('Grid data:', newGridData);
+
         return newGridData;
         });
     }, [gridSize, mirroringOptions.x, mirroringOptions.y]);

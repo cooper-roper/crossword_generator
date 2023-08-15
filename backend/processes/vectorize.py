@@ -1,11 +1,10 @@
 import numpy as np
-import os
 from scipy import spatial
 
 
 def get_embeddings_dict():
     embeddings_dict = {}
-    path = './backend/data/glove6B/glove.6B.300d.txt'
+    path = './backend/data/glove6B/glove.6B.50d.txt'
     with open(path, 'r', encoding="utf-8") as f:
         for line in f:
             values = line.split()

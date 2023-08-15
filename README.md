@@ -10,5 +10,6 @@ Backend:
 - [x] Find/Generate word list
 - [x] Set up database to store word list
 - [x] Generate word list from a topic using word2vec
-- [x] Generate crossword puzzle from list of words
-- [x] Generate crossword puzzle clues from list of worsd
+- [x] Generate crossword puzzle from list of words using backtracking algorithm
+- [x] Generate crossword puzzle clues from list of words
+

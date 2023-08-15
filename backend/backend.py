@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
-from dotenv import load_dotenv
+import vectorize
 
 app = Flask(__name__)
+embedding_dict = vectorize.get_embeddings_dict()
 
 # Create a route to handle POST requests from the frontend
 @app.route('/endpoint', methods=['POST'])
@@ -27,5 +28,4 @@ def handle_data():
     return jsonify({'message': 'Data received successfully'})
 
 if __name__ == '__main__':
-    load_dotenv()
     app.run(host='0.0.0.0', port=5000)
