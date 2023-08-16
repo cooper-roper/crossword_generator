@@ -14,8 +14,8 @@ def get_required_words(puzzle):
     for row in puzzle:
         for cell in row:
             if cell['number'] != -1:
-                # check horizontal
-                if cell['direction'] == 'horizontal' or cell['direction'] == 'both':
+                # check across
+                if cell['direction'] == 'across' or cell['direction'] == 'both':
                     # find length of word
                     length = 0
                     for i in range(cell['pos']['col'], len(row)):
@@ -24,9 +24,9 @@ def get_required_words(puzzle):
                         else:
                             break
                     # create word object
-                    words.append(Word('horizontal', cell['pos']['row'], cell['pos']['col'], length))
-                # check vertical
-                if cell['direction'] == 'vertical' or cell['direction'] == 'both':
+                    words.append(Word('across', cell['pos']['row'], cell['pos']['col'], length))
+                # check down
+                if cell['direction'] == 'down' or cell['direction'] == 'both':
                     # find length of word
                     length = 0
                     for i in range(cell['pos']['row'], len(puzzle)):
@@ -35,7 +35,7 @@ def get_required_words(puzzle):
                         else:
                             break
                     # create word object
-                    words.append(Word('vertical', cell['pos']['row'], cell['pos']['col'], length))
+                    words.append(Word('down', cell['pos']['row'], cell['pos']['col'], length))
     return words
 
 # check validity of letter in cell
@@ -59,8 +59,8 @@ def fill_puzzle(puzzle, word_list, words_required, index, words_used=[]):
     for word in word_list:
         # Check if the word has already been used in the puzzle
         if word not in words_used:
-            # Check horizontal placement
-            if current_word.direction == 'horizontal':
+            # Check across placement
+            if current_word.direction == 'across':
                 # Check if the word fits
                 if current_word.col + len(word) <= len(puzzle[0]):
                     valid_placement = all(check_letter(puzzle[current_word.row][current_word.col + i], word[i]) for i in range(len(word)))
@@ -80,8 +80,8 @@ def fill_puzzle(puzzle, word_list, words_required, index, words_used=[]):
                             puzzle[current_word.row][current_word.col + i]['letter'] = ' '
                         words_used.remove(word)
             
-            # Check vertical placement
-            elif current_word.direction == 'vertical':
+            # Check down placement
+            elif current_word.direction == 'down':
                 # Check if the word fits
                 if current_word.row + len(word) <= len(puzzle):
                     valid_placement = all(check_letter(puzzle[current_word.row + i][current_word.col], word[i]) for i in range(len(word)))
@@ -124,7 +124,8 @@ def build(puzzle, word_list):
 
 def main():
     # create puzzle for testing
-    puzzle = [[0 for x in range(3)] for y in range(3)]
+    #puzzle = [[0 for x in range(3)] for y in range(3)]
+    puzzle = [[0 for x in range(4)] for y in range(4)]
     puzzle[0][0] = {'pos': {'row': 0, 'col': 0}, 
                     'letter': ' ', 
                     'toggled' : True,
@@ -136,6 +137,11 @@ def main():
                     'number': -1,
                     'direction': None}
     puzzle[0][2] = {'pos': {'row': 0, 'col': 2},
+                    'letter': ' ',
+                    'toggled' : True,
+                    'number': -1,
+                    'direction': None}
+    puzzle[0][3] = {'pos': {'row': 0, 'col': 3},
                     'letter': ' ',
                     'toggled' : True,
                     'number': -1,
@@ -155,21 +161,52 @@ def main():
                     'toggled' : False,
                     'number': -1,
                     'direction': None}
+    puzzle[1][3] = {'pos': {'row': 1, 'col': 3},
+                    'letter': '#',
+                    'toggled' : False,
+                    'number': -1,
+                    'direction': None}
     puzzle[2][0] = {'pos': {'row': 2, 'col': 0},
+                    'letter': ' ',
+                    'toggled' : True,
+                    'number': 2,
+                    'direction': 'across'}
+    puzzle[2][1] = {'pos': {'row': 2, 'col': 1},
                     'letter': ' ',
                     'toggled' : True,
                     'number': -1,
                     'direction': None}
-    puzzle[2][1] = {'pos': {'row': 2, 'col': 1},
-                    'letter': '#',
-                    'toggled' : False,
-                    'number': -1,
-                    'direction': None}
     puzzle[2][2] = {'pos': {'row': 2, 'col': 2},
+                    'letter': ' ',
+                    'toggled' : True,
+                    'number': -1,
+                    'direction': None}
+    puzzle[2][3] = {'pos': {'row': 2, 'col': 3},
+                    'letter': ' ',
+                    'toggled' : True,
+                    'number': -1,
+                    'direction': None}
+    puzzle[3][0] = {'pos': {'row': 3, 'col': 0},
+                    'letter': ' ',
+                    'toggled' : True,
+                    'number': -1,
+                    'direction': None}
+    puzzle[3][1] = {'pos': {'row': 3, 'col': 1},
                     'letter': '#',
                     'toggled' : False,
                     'number': -1,
                     'direction': None}
+    puzzle[3][2] = {'pos': {'row': 3, 'col': 2},
+                    'letter': '#',
+                    'toggled' : False,
+                    'number': -1,
+                    'direction': None}
+    puzzle[3][3] = {'pos': {'row': 3, 'col': 3},
+                    'letter': '#',
+                    'toggled' : False,
+                    'number': -1,
+                    'direction': None}
+    
     
     # print puzzle (print the letters in each cell)
     print('Puzzle:')
@@ -183,7 +220,7 @@ def main():
     print()
     
     # word list for testing from vectorize.py
-    word_list = vectorize.create_word_list('animal')
+    word_list = vectorize.create_word_list('dad')
     # trim word list to 500 words
     word_list = word_list[:500]
 
