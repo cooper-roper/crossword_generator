@@ -1,3 +1,5 @@
+import vectorize
+
 # word class
 class Word:
     def __init__(self, direction, row, col, length):
@@ -180,8 +182,10 @@ def main():
         print()
     print()
     
-    # word list for testing
-    word_list = ['cat', 'dog', 'rat', 'bat', 'cop']
+    # word list for testing from vectorize.py
+    word_list = vectorize.create_word_list('animal')
+    # trim word list to 500 words
+    word_list = word_list[:500]
 
     # run solve function
     final_puzzle = build(puzzle, word_list)
