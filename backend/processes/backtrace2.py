@@ -57,6 +57,12 @@ def fill_puzzle(puzzle, word_list, words_required, index, words_used=[]):
     
     # Try placing the current word in all possible positions
     for word in word_list:
+        # if word contains a space, skip it
+        if ' ' in word:
+            continue
+        # if word is not correct length, skip it
+        if len(word) != current_word.length:
+            continue
         # Check if the word has already been used in the puzzle
         if word not in words_used:
             # Check across placement
@@ -182,8 +188,8 @@ def main():
                     'number': -1,
                     'direction': None}
     puzzle[2][3] = {'pos': {'row': 2, 'col': 3},
-                    'letter': ' ',
-                    'toggled' : True,
+                    'letter': '#',
+                    'toggled' : False,
                     'number': -1,
                     'direction': None}
     puzzle[3][0] = {'pos': {'row': 3, 'col': 0},
